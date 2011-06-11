@@ -141,7 +141,12 @@ double Encoder::read()
 	  pushed=false;
 	}
 
-	return position;
+	if (useF) {
+		return (position-32.0)*5.0/9.0;
+	} else {
+		return position;
+	}
+
 }
 
 /* switchCF ()******************************************************************
