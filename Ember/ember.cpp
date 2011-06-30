@@ -113,7 +113,7 @@ void Encoder::init()
 }
 
 /* read ()******************************************************************
- *    Returns encoder position
+ *    Returns encoder position in degrees C
  ***************************************************************************/
 double Encoder::read()
 {
@@ -140,13 +140,13 @@ double Encoder::read()
 	if ((digitalRead(ENC_C)==HIGH) && pushed) {
 	  pushed=false;
 	}
-
+	
+	//always return degrees C
 	if (useF) {
 		return (position-32.0)*5.0/9.0;
-	} else {
-		return position;
 	}
-
+	
+	return position;
 }
 
 /* switchCF ()******************************************************************
@@ -216,6 +216,12 @@ TempSensor::TempSensor() {
 	temp=20.0;//guess room temperature to start
 	temp_n=0;
 	temp_n_max=20;
+}
+
+//this would probably be better as separate init scripts for each sensor
+void TempSensor::init() {
+	pinMode(THERM_PIN, INPUT);
+	pinMode(AMP_PIN, INPUT);
 }
 
 /* updateTemp () *********************************************************

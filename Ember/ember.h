@@ -57,6 +57,7 @@ class TempSensor
 public:
 	TempSensor();
 	
+	void init();
 	double updateTemp(double);
 	//Sensor must implement getTemp
 	virtual double getTemp() = 0;
@@ -86,6 +87,21 @@ private:
 	double bridgeR1;
 	double bridgeR2;
 	double bridgeR3;
+	double ampFactor;
+};
+
+class Thermocouple : public TempSensor
+{
+public:
+	Thermocouple(char);
+	virtual double getTemp();
+private:
+	double d1;
+	double d2;
+	double d3;
+	double d4;
+	double d5;
+	double d6;
 	double ampFactor;
 };
 
