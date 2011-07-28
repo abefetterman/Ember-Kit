@@ -240,10 +240,10 @@ double TempSensor::updateTemp(double newReading)
   return temp;
 }
 
-NTCThermistor::NTCThermistor() {
-	Bval=3988.0; // B value
-	r_inf=0.0155223; //r infinity
-	vDiv=3000.0; //voltage divider upper resistance
+NTCThermistor::NTCThermistor(double _R0, double _Bval, double _vDiv) {
+	Bval=_Bval; // B value
+	r_inf=_R0*exp(-Bval/298.15); //r infinity
+	vDiv=_vDiv; //voltage divider upper resistance
 }
 
 /* NTCThermistor::getTemp () ************************************************

@@ -23,7 +23,7 @@ double temp, setpoint, output;
 PID pid(&temp, &output, &setpoint,KP_AGR,KI_AGR,KD_AGR,DIRECT);
 Encoder encoder;
 LED led;
-NTCThermistor tempProbe;
+NTCThermistor tempProbe(10000, 3380); //NTCThermistor(_R0, _Bval, _vDiv=3000)
 
 void setup()
 {  

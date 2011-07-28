@@ -70,7 +70,7 @@ private:
 class NTCThermistor : public TempSensor
 {
 public:
-	NTCThermistor();
+	NTCThermistor(double _R0, double _Bval, double _vDiv=3000);
 	virtual double getTemp();
 private:
 	double Bval;
