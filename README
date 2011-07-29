@@ -4,9 +4,9 @@ Licensed under Creative Commons Attribution-ShareAlike 3.0 Unported License
 http://lowereastkitchen.com
 
 Installation:
-** Copy the Ember and PID_v1 folders to your Arduino libraries folder.
-** Open the ember_arduino.pde file in the Arduino IDE.
-** Load the file onto your chip.
+1. Copy the Ember and PID_v1 folders to your Arduino libraries folder.
+2. Open the ember_arduino.pde file in the Arduino IDE.
+3. Load the file onto your chip.
 
 Ways to load onto files your chip:
 
