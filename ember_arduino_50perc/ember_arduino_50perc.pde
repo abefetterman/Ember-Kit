@@ -6,13 +6,13 @@
 #define PID_WINDOW_SIZE 500
 
 //aggressive PID parameters
-#define KP_AGR 1000
+#define KP_AGR 200
 #define KI_AGR 0
 #define KD_AGR 0
 
 //conservative PID parameters
-#define KP_CONS 500
-#define KI_CONS 1
+#define KP_CONS 100
+#define KI_CONS 0.2
 #define KD_CONS 0
 
 DoEvery tempTimer(100);
