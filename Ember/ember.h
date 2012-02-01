@@ -49,6 +49,8 @@ private:
 	bool displayPos;
 	bool useF;
 	unsigned long lastKnobTurn;
+    unsigned long thisKnobTurn;
+    int knobTurnRate;
 	unsigned long displayTime;
 };
 

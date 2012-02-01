@@ -2,29 +2,38 @@
 #include <EEPROM.h>
 #include <ember.h>                                 
 
+#define EMBER_VERSION 2
+
 //set pid window size
-#define PID_WINDOW_SIZE 500
+#define PID_WINDOW_SIZE 3000
 
 //aggressive PID parameters
-#define KP_AGR 1000
+#define KP_AGR 3000
 #define KI_AGR 0
 #define KD_AGR 0
 
 //conservative PID parameters
-#define KP_CONS 500
+#define KP_CONS 1500
 #define KI_CONS 1
 #define KD_CONS 0
 
 DoEvery tempTimer(100);
-DoEvery pidTimer(1000);
+DoEvery pidTimer(3000);
 
 double temp, setpoint, output;
 
 PID pid(&temp, &output, &setpoint,KP_AGR,KI_AGR,KD_AGR,DIRECT);
 Encoder encoder;
 LED led;
-NTCThermistor tempProbe(10000, 3380); //NTCThermistor(_R0, _Bval, _vDiv=3000)
-//RTDThermistor tempProbe; //for Pt-100
+
+#if EMBER_VERSION == 1
+  NTCThermistor tempProbe(10000, 3380); 
+  //RTDThermistor tempProbe; //for Pt-100
+#else
+  //assume version 2
+  NTCThermistor tempProbe(10000, 3988);
+
+#endif
 
 void setup()
 {  

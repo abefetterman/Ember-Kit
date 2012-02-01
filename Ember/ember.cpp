@@ -121,9 +121,11 @@ double Encoder::read()
     old_AB |= ( ENC_PORT & 0x03 );  //add current state
     int8_t encoderChange = enc_states[( old_AB & 0x0f )];
 	if( encoderChange ) {
-    	position += double(encoderChange*0.1);
+        thisKnobTurn=millis();
+        knobTurnRate=200/(lastKnobTurn-thisKnobTurn);
+    	position += double(encoderChange*0.1*double(knobTurnRate+1));
 	    displayPos=true;
-	    lastKnobTurn=millis();
+	    lastKnobTurn=thisKnobTurn;
     }
 
   	if((millis()-displayTime>lastKnobTurn) && displayPos) {
